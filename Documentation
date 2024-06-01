@@ -1,0 +1,55 @@
+User
+Hospital --->>
+Ambulance
+Driver
+
+
+
+Sehat Manager
+List<User>
+List<Hospital>
+List<Ambulance>
+
++ getHospitalByLocation(userLocation);
++ getAmbulanceByLocation(UserLocation);
++ userBookedAmbulance(User, hospital) ;
++ bookingConfirmation(Booking booking)
++ notification(user, ambulance)
+
+
+User
+-String name ;
+-Contact contact;
+-Address address ;
+-Location location;
+
+Hospital
+-String name ;
+-Address address;
+-Location location;
+-Contact contact;
+
+Ambulance
+-Vehicle vehicle ;
+-Status status ;
+-List<Driver>
+-Location location;
+
+
+Vehicle
+-String name ;
+-String number ;
+
+ENUM Status
+-Running, Available, Unavailable
+
+
+Driver
+-String name ;
+-Contact contact;
+-Ambulance ambulance ;
+
+Booking
+-User user ;
+-Hospital hospital;
+-Ambulance ambulance;
