@@ -1,4 +1,4 @@
-package com.life.support.sehat.models.impl;
+package com.life.support.sehat.models;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
@@ -21,13 +21,35 @@ public class HealthcareFacility {
     @JsonInclude(value = JsonInclude.Include.NON_NULL)
     @OneToOne(cascade = CascadeType.ALL)
     private Contact contact;
-    @JsonInclude(value = JsonInclude.Include.NON_NULL)
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Ambulance> ambulances;
     @CreationTimestamp
     private Date createdAt;
     @UpdateTimestamp
     private Date updateAt;
+
+    private Address address;
+
+    private String city ;
+
+    public String getCity() {
+        return city;
+    }
+
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
     public long getId() {
         return id;
@@ -49,40 +71,14 @@ public class HealthcareFacility {
         return location;
     }
 
-    public void setLocation(Location location) {
-        if(location==null){
-            if(this.location!=null){
-                this.location.setHealthcareFacility(null);
-            }
-        }
-        else{
-            location.setHealthcareFacility(this);
-        }
-        this.location = location;
-    }
+
 
     public Contact getContact() {
         return contact;
     }
 
     public void setContact(Contact contact) {
-        if(contact==null){
-            if(this.contact!=null){
-                this.contact.setHealthcareFacility(null);
-            }
-        }
-        else{
-            contact.setHealthcareFacility(this);
-        }
         this.contact = contact;
-    }
-
-    public List<Ambulance> getAmbulances() {
-        return ambulances;
-    }
-
-    public void setAmbulances(List<Ambulance> ambulances) {
-        this.ambulances = ambulances;
     }
 
     public Date getCreatedAt() {

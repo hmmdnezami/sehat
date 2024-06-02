@@ -1,4 +1,4 @@
-package com.life.support.sehat.models.impl;
+package com.life.support.sehat.models;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;

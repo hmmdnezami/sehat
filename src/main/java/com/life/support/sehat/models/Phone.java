@@ -1,32 +1,34 @@
-package com.life.support.sehat.models.impl;
+package com.life.support.sehat.models;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 
-@Entity(name = "email")
-public class Email {
+@Entity(name = "phone")
+public class Phone {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long eid;
-    private String email;
+    private long pid;
+    private long phone;
     @JsonInclude(value = JsonInclude.Include.NON_NULL)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private Contact contact;
-    public long getEid() {
-        return eid;
+
+    public long getPid() {
+        return pid;
     }
 
-    public void setEid(long eid) {
-        this.eid = eid;
+    public void setPid(long pid) {
+        this.pid = pid;
     }
 
-    public String getEmail() {
-        return email;
+    public long getPhone() {
+        return phone;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPhone(long phone) {
+        this.phone = phone;
     }
 
     public Contact getContact() {
