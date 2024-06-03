@@ -53,3 +53,26 @@ Booking
 -User user ;
 -Hospital hospital;
 -Ambulance ambulance;
+
+---------------------------------------
+-Should user need to book ambulance? or system should assign the ambulance
+itself, as user does not select which ambulance is better..
+-Need of ambulance means it is emergency.
+
+Next Steps :
+
+-signup and login flow(UI, Backend).
+-google maps api integration.
+-booking flow(till booking notification).
+-payment flow.
+-user and driver chat interface.
+-ambulance tracking with notification
+-user reviews interface
+-search hospital based on user inputs(like heart specialist, gastro, etc).
+-search top hospitals category wise and based on reviews.
+-real-time updation of beds, and doctors available and suggestion based on that
+-records about no. of doctors, beds, ventilators, and other facilities.
+-two modes of operation: emergency and normal.
+-emergency mode will take care of everything, from searching to booking.
+-while normal mode will give users options about hospitals and other stuffs.
+
