@@ -26,6 +26,8 @@ public class HealthcareFacility {
     @UpdateTimestamp
     private Date updateAt;
 
+    @JsonInclude(value = JsonInclude.Include.NON_NULL)
+    @OneToOne(cascade = CascadeType.ALL)
     private Address address;
 
     private String city ;

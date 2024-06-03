@@ -10,12 +10,20 @@ public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long adid;
 
     private String address;
     private String city;
     private String pincode ;
     private String state ;
+
+    public long getAdid() {
+        return adid;
+    }
+
+    public void setAdid(long adid) {
+        this.adid = adid;
+    }
 
     public String getAddress() {
         return address;

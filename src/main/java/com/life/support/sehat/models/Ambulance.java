@@ -3,7 +3,6 @@ package com.life.support.sehat.models;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 
-import java.sql.Driver;
 import java.util.List;
 
 @Entity(name = "ambulance")

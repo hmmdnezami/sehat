@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 public interface AmbulanceRepository extends CrudRepository<Ambulance, Long> {
 
-    @Query("select h from Ambulance h where h.city = ?1")
-    public List<Ambulance> findAmbulanceByCity(String cityName);
+//    @Query("select h from Ambulance h where h.city = ?1")
+    List<Ambulance> findAmbulanceByCity(String cityName);
 }
