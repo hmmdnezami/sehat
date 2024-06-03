@@ -19,7 +19,7 @@ public class HospitalServiceImpl implements HospitalService {
 
     @Override
     public HealthcareFacility addHealthcareFacility(HealthcareFacility healthcareFacility) {
-        String city = healthcareFacility.getAddress().getCity();
+        String city = healthcareFacility.getAddress()!=null?healthcareFacility.getAddress().getCity():null;
         healthcareFacility.setCity(city);
 
         return hospitalRepository.save(healthcareFacility);

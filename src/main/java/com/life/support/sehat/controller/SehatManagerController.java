@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/api/v2")
 public class SehatManagerController {
 
@@ -19,12 +19,12 @@ public class SehatManagerController {
     private SehatManagerService sehatManagerService;
 
     @GetMapping(value = "/hospital/city/{cityName}")
-    public List<HealthcareFacility> getAllHospitalByCity(@RequestParam String cityName) {
+    public List<HealthcareFacility> getAllHospitalByCity(@PathVariable String cityName) {
         return sehatManagerService.getAllHospitals(cityName);
     }
 
     @GetMapping(value = "/ambulance/city/{cityName}")
-    public List<Ambulance> findAmbulanceNearToUser(@RequestParam String cityName) {
+    public List<Ambulance> findAmbulanceNearToUser(@PathVariable String cityName) {
         return sehatManagerService.getAllAmbulaceNearToUser(cityName);
     }
 

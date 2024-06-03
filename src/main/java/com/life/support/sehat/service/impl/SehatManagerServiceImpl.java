@@ -32,8 +32,8 @@ public class SehatManagerServiceImpl implements SehatManagerService {
     @Autowired
     public BookingRepository bookingRepository;
 
-    @Autowired
-    public Booking booking;
+//    @Autowired
+//    public Booking booking;
 
     @Override
     public List<HealthcareFacility> getAllHospitals(String cityName) {
@@ -53,6 +53,7 @@ public class SehatManagerServiceImpl implements SehatManagerService {
     @Override
     public Booking bookingForUser(HealthcareFacility healthcareFacility, Ambulance ambulance, Long userId) {
         Optional<User> user = userRepository.findById(userId);
+        Booking booking = new Booking();
         booking.setUserName(user.get().getName());
         booking.setEmail(user.get().getEmail());
         booking.setHealthcareFacility(healthcareFacility);
