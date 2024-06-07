@@ -54,7 +54,7 @@ public class SehatManagerServiceImpl implements SehatManagerService {
     public Booking bookingForUser(HealthcareFacility healthcareFacility, Ambulance ambulance, Long userId) {
         Optional<User> user = userRepository.findById(userId);
         Booking booking = new Booking();
-        booking.setUserName(user.get().getName());
+//        booking.setUserName(user.get().getName());
         booking.setEmail(user.get().getEmail());
         booking.setHealthcareFacility(healthcareFacility);
         booking.getAmbulanceNumber(ambulance.getVehicle().getNumber());

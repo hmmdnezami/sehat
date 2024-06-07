@@ -1,35 +1,35 @@
-package com.life.support.sehat.models;
+package com.life.support.sehat.payload;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+import java.util.Set;
 
-@Entity
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class SignupRequest {
+    @NotBlank
+    @Size(min = 3, max = 20)
     private String username;
 
+    @NotBlank
+    @Size(max = 50)
+    @Email
     private String email;
 
-    private String firstName ;
-    private  String lastName ;
+    @NotBlank
+    private  String firstName ;
 
+    @NotBlank
+    private String lastName ;
+
+    @NotBlank
     private String address ;
 
-    @JsonIgnore
+    private Set<String> role;
+
+    @NotBlank
+    @Size(min = 6, max = 40)
     private String password;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getUsername() {
         return username;
@@ -79,16 +79,11 @@ public class User {
         this.password = password;
     }
 
-    public User() {
-        // Default constructor
+    public Set<String> getRole() {
+        return this.role;
     }
-    public User(String username, String email, String firstName, String lastName, String address, String password) {
 
-        this.username = username;
-        this.email = email;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.address = address;
-        this.password = password;
+    public void setRole(Set<String> role) {
+        this.role = role;
     }
 }
