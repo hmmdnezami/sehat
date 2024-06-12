@@ -10,4 +10,6 @@ public interface HospitalService {
     HealthcareFacility getHealthcareFacility(Long id);
 
     List<HealthcareFacility> getAllHealthcareFacility();
+
+    List<HealthcareFacility> getAllHealthCareInCity(String cityName);
 }

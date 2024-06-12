@@ -22,6 +22,7 @@ public class HospitalServiceImpl implements HospitalService {
         String city = healthcareFacility.getAddress()!=null?healthcareFacility.getAddress().getCity():null;
         healthcareFacility.setCity(city);
 
+
         return hospitalRepository.save(healthcareFacility);
     }
 
@@ -34,5 +35,10 @@ public class HospitalServiceImpl implements HospitalService {
     @Override
     public List<HealthcareFacility> getAllHealthcareFacility() {
         return (List<HealthcareFacility>) hospitalRepository.findAll();
+    }
+
+    @Override
+    public List<HealthcareFacility> getAllHealthCareInCity(String cityName) {
+        return hospitalRepository.findHospitalsByCity(cityName);
     }
 }

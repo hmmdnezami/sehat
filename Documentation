@@ -14,7 +14,7 @@ List<Ambulance>
 + getAmbulanceByLocation(UserLocation);
 + userBookedAmbulance(User, hospital) ;
 + bookingConfirmation(Booking booking)
-+ notification(user, ambulance)
++ notification(user.contact, ambulance)
 
 
 User
@@ -75,4 +75,15 @@ Next Steps :
 -two modes of operation: emergency and normal.
 -emergency mode will take care of everything, from searching to booking.
 -while normal mode will give users options about hospitals and other stuffs.
+
+
+
+useid : lati = x / longitude = y
+
+driver : lati/logn
+
+// home
+// navbar -- profile  /// about ///
+search ---  destination --- (hospital)
+
 

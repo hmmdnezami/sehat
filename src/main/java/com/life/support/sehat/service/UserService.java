@@ -11,4 +11,6 @@ public interface UserService {
     List<User> getAllUsers();
 
     Optional<User> getUsersById(Long userId);
+
+    List<User> findAllDriverWithoutAmbulance();
 }

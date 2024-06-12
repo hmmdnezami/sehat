@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface HospitalRepository extends CrudRepository<HealthcareFacility, Long> {
 
-    @Query("select h from HealthcareFacility h where h.city = ?1")
+    @Query("select h from HealthcareFacility h where h.city = ?1 ")
     public List<HealthcareFacility> findHospitalsByCity(String cityName);
 
 }

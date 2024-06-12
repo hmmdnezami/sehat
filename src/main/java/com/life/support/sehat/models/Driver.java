@@ -1,12 +1,13 @@
 package com.life.support.sehat.models;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
-public class User {
-
+public class Driver {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,28 +21,12 @@ public class User {
 
     private boolean isDriver ;
 
-    private Ambulance ambulance;
-
     private String address ;
+
+    private Ambulance ambulance;
 
     @JsonIgnore
     private String password;
-
-    public boolean isDriver() {
-        return isDriver;
-    }
-
-    public Ambulance getAmbulance() {
-        return ambulance;
-    }
-
-    public void setAmbulance(Ambulance ambulance) {
-        this.ambulance = ambulance;
-    }
-
-    public void setDriver(boolean driver) {
-        isDriver = driver;
-    }
 
     public Long getId() {
         return id;
@@ -83,6 +68,14 @@ public class User {
         this.lastName = lastName;
     }
 
+    public boolean isDriver() {
+        return isDriver;
+    }
+
+    public void setDriver(boolean driver) {
+        isDriver = driver;
+    }
+
     public String getAddress() {
         return address;
     }
@@ -91,24 +84,19 @@ public class User {
         this.address = address;
     }
 
+    public Ambulance getAmbulance() {
+        return ambulance;
+    }
+
+    public void setAmbulance(Ambulance ambulance) {
+        this.ambulance = ambulance;
+    }
+
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public User() {
-        // Default constructor
-    }
-    public User(String username, String email, String firstName, String lastName, String address, String password) {
-
-        this.username = username;
-        this.email = email;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.address = address;
         this.password = password;
     }
 }

@@ -13,4 +13,5 @@ public interface AmbulanceService {
 
     List<Ambulance> getAllAmbulance();
 
+    List<Ambulance> getAllAmbulanceByStatus(String status);
 }

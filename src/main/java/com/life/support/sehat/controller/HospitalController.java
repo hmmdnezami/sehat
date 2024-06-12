@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/api/v2")
 public class HospitalController {
 
     @Autowired
     private HospitalService hospitalService;
+
 
     @RequestMapping(value = "/healthcare", method = RequestMethod.POST)
     public HealthcareFacility addHealthCareFacility(@RequestBody HealthcareFacility healthcareFacility){
@@ -28,5 +30,10 @@ public class HospitalController {
     @GetMapping(value = "/healthcare/{healthCardId}")
     public HealthcareFacility getHealthcareFacility(@RequestParam Long healthCardId){
         return hospitalService.getHealthcareFacility(healthCardId);
+    }
+
+    @GetMapping(value ="/heathCare/{cityName}")
+    public List<HealthcareFacility> getAllHealthCareinCity(@RequestParam String cityName) {
+        return hospitalService.getAllHealthCareInCity(cityName);
     }
 }

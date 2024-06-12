@@ -8,6 +8,7 @@ import com.life.support.sehat.service.AmbulanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,6 +35,16 @@ public class AmbulanceServiceImpl implements AmbulanceService {
     @Override
     public List<Ambulance> getAllAmbulance() {
         return (List<Ambulance>) ambulanceRepository.findAll();
+    }
+
+    @Override
+    public List<Ambulance> getAllAmbulanceByStatus(String status) {
+        List<Ambulance>ambulanceList = new ArrayList<>();
+        List<Ambulance> allAmbulances = getAllAmbulance();
+        for (Ambulance ambulance : allAmbulances) {
+            if (ambulance.getStatus().toString().equals(status)) ambulanceList.add(ambulance) ;
+        }
+        return ambulanceList;
     }
 
 }

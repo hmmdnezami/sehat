@@ -25,6 +25,14 @@ public class AmbulanceController {
     @GetMapping(value = "/ambulances")
     public List<Ambulance> getAllAmbulance(){ return ambulanceService.getAllAmbulance(); }
 
+
+    @GetMapping("/ambulances/{status}")
+    public List<Ambulance> getAmbulanceByStatus(@PathVariable String status) {
+        return ambulanceService.getAllAmbulanceByStatus(status);
+    }
+
+
+
     @ResponseBody
     @RequestMapping(value = "/ambulance/{ambulanceId}", method = RequestMethod.GET)
     public Ambulance getAmbulance(@RequestParam Long ambulanceId){

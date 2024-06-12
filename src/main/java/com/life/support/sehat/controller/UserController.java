@@ -31,6 +31,11 @@ public class UserController {
     public Optional<User> getUserById (@PathVariable Long userId) {
         return userService.getUsersById(userId);
     }
+    
 
+    @GetMapping("/users/driver")
+    public List<User> getAllDriverWithoutAmbulance() {
+        return userService.findAllDriverWithoutAmbulance();
+    }
 
 }
