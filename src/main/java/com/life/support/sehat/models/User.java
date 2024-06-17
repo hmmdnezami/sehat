@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "user")
 public class User {
 
     @Id
@@ -18,17 +19,24 @@ public class User {
     private String firstName ;
     private  String lastName ;
 
-    private boolean isDriver ;
+    private String address ;
 
+    private String licenseNumber ;
+
+    @ManyToOne
     private Ambulance ambulance;
 
-    private String address ;
+    private String userType ;
 
     @JsonIgnore
     private String password;
 
-    public boolean isDriver() {
-        return isDriver;
+    public String getLicenseNumber() {
+        return licenseNumber;
+    }
+
+    public void setLicenseNumber(String licenseNumber) {
+        this.licenseNumber = licenseNumber;
     }
 
     public Ambulance getAmbulance() {
@@ -39,8 +47,12 @@ public class User {
         this.ambulance = ambulance;
     }
 
-    public void setDriver(boolean driver) {
-        isDriver = driver;
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 
     public Long getId() {
@@ -111,4 +123,6 @@ public class User {
         this.address = address;
         this.password = password;
     }
+
+
 }

@@ -1,5 +1,6 @@
 package com.life.support.sehat.service.impl;
 
+import com.life.support.sehat.dto.Driver;
 import com.life.support.sehat.models.Ambulance;
 import com.life.support.sehat.models.Booking;
 import com.life.support.sehat.models.HealthcareFacility;
@@ -12,10 +13,7 @@ import com.life.support.sehat.service.SehatManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class SehatManagerServiceImpl implements SehatManagerService {
@@ -60,6 +58,49 @@ public class SehatManagerServiceImpl implements SehatManagerService {
         booking.getAmbulanceNumber(ambulance.getVehicle().getNumber());
         booking.setDriverName("Default_Name");
         return bookingRepository.save(booking);
+    }
+
+    @Override
+    public List<Driver> findAllDriverWithoutAmbulance(String status) {
+
+        List<User> userList = userRepository.findByUserType("DRIVER");
+        List<Driver> driverList = new ArrayList<>();
+        for (User user : userList) {
+            if (user.getAmbulance() == null) {
+                Driver d = convertUserToDriver(user);
+                driverList.add(d);
+            }
+        }
+        return driverList;
+    }
+
+    @Override
+    public Driver registedAmbulanceToDriver(Long driverId, Ambulance ambulance) {
+
+        Optional<User> userOptional =  userRepository.findById(driverId);
+
+        if (userOptional.isPresent()) {
+            User existingUser = userOptional.get();
+            System.out.println("user is : " + existingUser.toString());
+            existingUser.setAmbulance(ambulance);
+            userRepository.save(existingUser);
+
+            return convertUserToDriver(existingUser);
+        }
+        return new Driver();
+
+    }
+
+    public Driver convertUserToDriver(User user) {
+        Driver driver = new Driver();
+        driver.setId(user.getId());
+        driver.setEmail(user.getEmail());
+        driver.setAddress(user.getAddress());
+        driver.setFirstName(user.getFirstName());
+        driver.setLastName(user.getLastName());
+        if (user.getLicenseNumber() != null) driver.setLicenseNumber(user.getLicenseNumber());
+        if (user.getAmbulance() != null) driver.setAmbulance(user.getAmbulance());
+        return driver;
     }
 
 

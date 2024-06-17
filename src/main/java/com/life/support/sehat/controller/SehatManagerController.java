@@ -1,8 +1,10 @@
 package com.life.support.sehat.controller;
 
+import com.life.support.sehat.dto.Driver;
 import com.life.support.sehat.models.Ambulance;
 import com.life.support.sehat.models.Booking;
 import com.life.support.sehat.models.HealthcareFacility;
+import com.life.support.sehat.models.User;
 import com.life.support.sehat.service.SehatManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,6 +34,16 @@ public class SehatManagerController {
     public Booking bookingForUser(@RequestBody HealthcareFacility healthcareFacility,
                                   @RequestBody Ambulance ambulance, @PathVariable Long userId) {
         return sehatManagerService.bookingForUser(healthcareFacility, ambulance, userId);
+    }
+
+    @GetMapping("/driver/{status}")
+    public List<Driver> getAllDriverWithoutAmbulance(@PathVariable String status) {
+        return sehatManagerService.findAllDriverWithoutAmbulance(status);
+    }
+
+    @PutMapping("/driver/ambulance/{driverId}")
+    public Driver registedAmbulanceToDriver(@PathVariable Long driverId, @RequestBody Ambulance ambulance) {
+        return sehatManagerService.registedAmbulanceToDriver(driverId, ambulance);
     }
 
 }

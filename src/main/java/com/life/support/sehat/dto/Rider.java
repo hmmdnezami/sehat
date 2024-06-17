@@ -1,29 +1,21 @@
-package com.life.support.sehat.models;
+package com.life.support.sehat.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Entity;
+import com.life.support.sehat.models.Ambulance;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-@Entity
-public class Driver {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Rider {
 
-    private String username;
+    private Long id;
 
     private String email;
 
     private String firstName ;
     private  String lastName ;
 
-    private boolean isDriver ;
-
     private String address ;
-
-    private Ambulance ambulance;
 
     @JsonIgnore
     private String password;
@@ -34,14 +26,6 @@ public class Driver {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getEmail() {
@@ -68,14 +52,6 @@ public class Driver {
         this.lastName = lastName;
     }
 
-    public boolean isDriver() {
-        return isDriver;
-    }
-
-    public void setDriver(boolean driver) {
-        isDriver = driver;
-    }
-
     public String getAddress() {
         return address;
     }
@@ -84,13 +60,6 @@ public class Driver {
         this.address = address;
     }
 
-    public Ambulance getAmbulance() {
-        return ambulance;
-    }
-
-    public void setAmbulance(Ambulance ambulance) {
-        this.ambulance = ambulance;
-    }
 
     public String getPassword() {
         return password;

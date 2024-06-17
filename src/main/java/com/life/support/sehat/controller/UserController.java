@@ -1,5 +1,7 @@
 package com.life.support.sehat.controller;
 
+import com.life.support.sehat.dto.Driver;
+import com.life.support.sehat.dto.Rider;
 import com.life.support.sehat.models.User;
 import com.life.support.sehat.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 
@@ -17,9 +20,15 @@ public class UserController {
     @Autowired
     public UserService userService;
 
-    @PostMapping("/users")
-    public User addUser(@RequestBody User user) {
-        return userService.addUser(user);
+    @PutMapping("/rider/{riderId}")
+    public Rider updateRiderUser(@RequestBody User user, Long riderId) {
+        return userService.updateRider(user, riderId);
+    }
+
+
+    @PutMapping("/driver/{driverId}")
+    public Driver updateDriverUser(@RequestBody User user, @PathVariable  Long driverId) {
+        return userService.updateDriver(user, driverId);
     }
 
     @GetMapping("/users")
@@ -33,9 +42,6 @@ public class UserController {
     }
     
 
-    @GetMapping("/users/driver")
-    public List<User> getAllDriverWithoutAmbulance() {
-        return userService.findAllDriverWithoutAmbulance();
-    }
+
 
 }
