@@ -1,0 +1,39 @@
+services:
+  sehatdb:
+    container_name: sehatdb
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
+    volumes:
+      - my-db:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: sehatDB
+#      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: ROOT
+#      MYSQL_PASSWORD: ROOT
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pROOT"]
+      timeout: 20s
+      retries: 10
+
+
+  sehatapp:
+    container_name: sehatapp
+    image: sehat/sehatapp:1.0
+    restart: on-failure
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      MYSQL_HOST: sehatdb
+      MYSQL_USER: root
+      MYSQL_PASSWORD: ROOT
+      MYSQL_PORT: 3306    # we are in same network so we connect internally.
+    depends_on:
+      sehatdb:
+        condition: service_healthy
+
+volumes:
+  my-db:
