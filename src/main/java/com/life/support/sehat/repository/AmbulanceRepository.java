@@ -1,8 +1,6 @@
 package com.life.support.sehat.repository;
 
 import com.life.support.sehat.models.Ambulance;
-import com.life.support.sehat.models.HealthcareFacility;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

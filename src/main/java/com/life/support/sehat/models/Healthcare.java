@@ -6,11 +6,10 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "healthcare")
-public class HealthcareFacility {
+public class Healthcare {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

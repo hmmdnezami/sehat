@@ -3,17 +3,17 @@ package com.life.support.sehat.service;
 import com.life.support.sehat.dto.Driver;
 import com.life.support.sehat.models.Ambulance;
 import com.life.support.sehat.models.Booking;
-import com.life.support.sehat.models.HealthcareFacility;
+import com.life.support.sehat.models.Healthcare;
 
 import java.util.List;
 
 public interface SehatManagerService {
 
-    List<HealthcareFacility> getAllHospitals(String cityName);
+    List<Healthcare> getAllHospitals(String cityName);
 
     List<Ambulance> getAllAmbulaceNearToUser(String cityName);
 
-    Booking bookingForUser(HealthcareFacility healthcareFacility, Ambulance ambulance, Long userId);
+    Booking bookingForUser(Healthcare healthcare, Ambulance ambulance, Long userId);
 
     List<Driver> findAllDriverWithoutAmbulance(String status);
 

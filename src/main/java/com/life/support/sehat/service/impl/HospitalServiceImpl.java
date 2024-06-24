@@ -1,6 +1,6 @@
 package com.life.support.sehat.service.impl;
 
-import com.life.support.sehat.models.HealthcareFacility;
+import com.life.support.sehat.models.Healthcare;
 import com.life.support.sehat.repository.HospitalRepository;
 import com.life.support.sehat.service.HospitalService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,27 +18,26 @@ public class HospitalServiceImpl implements HospitalService {
 
 
     @Override
-    public HealthcareFacility addHealthcareFacility(HealthcareFacility healthcareFacility) {
-        String city = healthcareFacility.getAddress()!=null?healthcareFacility.getAddress().getCity():null;
-        healthcareFacility.setCity(city);
-
-
-        return hospitalRepository.save(healthcareFacility);
+    public Healthcare addHealthcareFacility(Healthcare healthcare) {
+        String city = healthcare.getAddress()!=null? healthcare.getAddress().getCity():null;
+        if (city != null)
+            healthcare.setCity(city);
+        return hospitalRepository.save(healthcare);
     }
 
     @Override
-    public HealthcareFacility getHealthcareFacility(Long id) {
-        Optional<HealthcareFacility> healthcareFacility = hospitalRepository.findById(id);
+    public Healthcare getHealthcareFacility(Long id) {
+        Optional<Healthcare> healthcareFacility = hospitalRepository.findById(id);
         return healthcareFacility.orElse(null);
     }
 
     @Override
-    public List<HealthcareFacility> getAllHealthcareFacility() {
-        return (List<HealthcareFacility>) hospitalRepository.findAll();
+    public List<Healthcare> getAllHealthcareFacility() {
+        return (List<Healthcare>) hospitalRepository.findAll();
     }
 
     @Override
-    public List<HealthcareFacility> getAllHealthCareInCity(String cityName) {
+    public List<Healthcare> getAllHealthCareInCity(String cityName) {
         return hospitalRepository.findHospitalsByCity(cityName);
     }
 }

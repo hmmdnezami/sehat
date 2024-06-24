@@ -3,7 +3,7 @@ package com.life.support.sehat.service.impl;
 import com.life.support.sehat.dto.Driver;
 import com.life.support.sehat.models.Ambulance;
 import com.life.support.sehat.models.Booking;
-import com.life.support.sehat.models.HealthcareFacility;
+import com.life.support.sehat.models.Healthcare;
 import com.life.support.sehat.models.User;
 import com.life.support.sehat.repository.AmbulanceRepository;
 import com.life.support.sehat.repository.BookingRepository;
@@ -34,7 +34,7 @@ public class SehatManagerServiceImpl implements SehatManagerService {
 //    public Booking booking;
 
     @Override
-    public List<HealthcareFacility> getAllHospitals(String cityName) {
+    public List<Healthcare> getAllHospitals(String cityName) {
         return hospitalRepository.findHospitalsByCity(cityName);
     }
 
@@ -49,12 +49,12 @@ public class SehatManagerServiceImpl implements SehatManagerService {
     }
 
     @Override
-    public Booking bookingForUser(HealthcareFacility healthcareFacility, Ambulance ambulance, Long userId) {
+    public Booking bookingForUser(Healthcare healthcare, Ambulance ambulance, Long userId) {
         Optional<User> user = userRepository.findById(userId);
         Booking booking = new Booking();
 //        booking.setUserName(user.get().getName());
         booking.setEmail(user.get().getEmail());
-        booking.setHealthcareFacility(healthcareFacility);
+        booking.setHealthcareFacility(healthcare);
         booking.getAmbulanceNumber(ambulance.getVehicle().getNumber());
         booking.setDriverName("Default_Name");
         return bookingRepository.save(booking);

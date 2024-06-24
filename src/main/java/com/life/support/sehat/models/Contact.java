@@ -12,33 +12,23 @@ public class Contact {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long cid;
     private String name;
+
     @JsonInclude(value = JsonInclude.Include.NON_NULL)
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Email> email;
+    private List<String> email;
+
     @JsonInclude(value = JsonInclude.Include.NON_NULL)
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Phone> phone;
-    @JsonInclude(value = JsonInclude.Include.NON_NULL)
-    @OneToOne(fetch = FetchType.LAZY)
-    private HealthcareFacility healthcareFacility;
+    private List<Long> phone;
+
     @JsonInclude(value = JsonInclude.Include.NON_NULL)
     @OneToOne(fetch = FetchType.LAZY)
-    private Ambulance ambulance;
+    private Healthcare healthcare;
 
-    public Ambulance getAmbulance() {
-        return ambulance;
+    public Healthcare getHealthcareFacility() {
+        return healthcare;
     }
 
-    public void setAmbulance(Ambulance ambulance) {
-        this.ambulance = ambulance;
-    }
-
-    public HealthcareFacility getHealthcareFacility() {
-        return healthcareFacility;
-    }
-
-    public void setHealthcareFacility(HealthcareFacility healthcareFacility) {
-        this.healthcareFacility = healthcareFacility;
+    public void setHealthcareFacility(Healthcare healthcare) {
+        this.healthcare = healthcare;
     }
 
     public long getCid() {
@@ -57,19 +47,19 @@ public class Contact {
         this.name = name;
     }
 
-    public List<Email> getEmail() {
+    public List<String> getEmail() {
         return email;
     }
 
-    public void setEmail(List<Email> email) {
+    public void setEmail(List<String> email) {
         this.email = email;
     }
 
-    public List<Phone> getPhone() {
+    public List<Long> getPhone() {
         return phone;
     }
 
-    public void setPhone(List<Phone> phone) {
+    public void setPhone(List<Long> phone) {
         this.phone = phone;
     }
 }

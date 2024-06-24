@@ -15,7 +15,7 @@ public class Booking {
     private String email;
 
     @OneToOne(cascade = CascadeType.ALL)
-    private HealthcareFacility healthcareFacility;
+    private Healthcare healthcare;
 
     private String ambulanceNumber ;
     private String driverName;
@@ -44,12 +44,12 @@ public class Booking {
         this.email = email;
     }
 
-    public HealthcareFacility getHealthcareFacility() {
-        return healthcareFacility;
+    public Healthcare getHealthcareFacility() {
+        return healthcare;
     }
 
-    public void setHealthcareFacility(HealthcareFacility healthcareFacility) {
-        this.healthcareFacility = healthcareFacility;
+    public void setHealthcareFacility(Healthcare healthcare) {
+        this.healthcare = healthcare;
     }
 
     public String getAmbulanceNumber(String number) {

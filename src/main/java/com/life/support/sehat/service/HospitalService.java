@@ -1,15 +1,15 @@
 package com.life.support.sehat.service;
 
-import com.life.support.sehat.models.HealthcareFacility;
+import com.life.support.sehat.models.Healthcare;
 
 import java.util.List;
 
 public interface HospitalService {
-    HealthcareFacility addHealthcareFacility(HealthcareFacility healthcareFacility);
+    Healthcare addHealthcareFacility(Healthcare healthcare);
 
-    HealthcareFacility getHealthcareFacility(Long id);
+    Healthcare getHealthcareFacility(Long id);
 
-    List<HealthcareFacility> getAllHealthcareFacility();
+    List<Healthcare> getAllHealthcareFacility();
 
-    List<HealthcareFacility> getAllHealthCareInCity(String cityName);
+    List<Healthcare> getAllHealthCareInCity(String cityName);
 }
