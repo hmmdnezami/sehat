@@ -49,18 +49,6 @@ public class SehatManagerServiceImpl implements SehatManagerService {
     }
 
     @Override
-    public Booking bookingForUser(HealthcareFacility healthcareFacility, Ambulance ambulance, Long userId) {
-        Optional<User> user = userRepository.findById(userId);
-        Booking booking = new Booking();
-//        booking.setUserName(user.get().getName());
-        booking.setEmail(user.get().getEmail());
-        booking.setHealthcareFacility(healthcareFacility);
-        booking.getAmbulanceNumber(ambulance.getVehicle().getNumber());
-        booking.setDriverName("Default_Name");
-        return bookingRepository.save(booking);
-    }
-
-    @Override
     public List<Driver> findAllDriverWithoutAmbulance(String status) {
 
         List<User> userList = userRepository.findByUserType("DRIVER");

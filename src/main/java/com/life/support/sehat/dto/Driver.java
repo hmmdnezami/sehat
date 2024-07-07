@@ -1,9 +1,6 @@
 package com.life.support.sehat.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.life.support.sehat.models.Ambulance;
-import com.life.support.sehat.models.User;
-import jakarta.persistence.*;
 
 public class Driver  {
     private Long id;

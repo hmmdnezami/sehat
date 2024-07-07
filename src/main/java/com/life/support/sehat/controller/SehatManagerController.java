@@ -30,12 +30,6 @@ public class SehatManagerController {
         return sehatManagerService.getAllAmbulaceNearToUser(cityName);
     }
 
-    @PostMapping(value ="/booking/user/{userId}")
-    public Booking bookingForUser(@RequestBody HealthcareFacility healthcareFacility,
-                                  @RequestBody Ambulance ambulance, @PathVariable Long userId) {
-        return sehatManagerService.bookingForUser(healthcareFacility, ambulance, userId);
-    }
-
     @GetMapping("/driver/{status}")
     public List<Driver> getAllDriverWithoutAmbulance(@PathVariable String status) {
         return sehatManagerService.findAllDriverWithoutAmbulance(status);

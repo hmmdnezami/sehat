@@ -4,6 +4,8 @@ package com.life.support.sehat.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "user")
 public class User {
@@ -30,6 +32,17 @@ public class User {
 
     @JsonIgnore
     private String password;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Booking> bookings;
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
+    }
 
     public String getLicenseNumber() {
         return licenseNumber;

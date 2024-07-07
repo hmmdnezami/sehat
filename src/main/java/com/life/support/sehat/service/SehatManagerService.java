@@ -13,8 +13,6 @@ public interface SehatManagerService {
 
     List<Ambulance> getAllAmbulaceNearToUser(String cityName);
 
-    Booking bookingForUser(HealthcareFacility healthcareFacility, Ambulance ambulance, Long userId);
-
     List<Driver> findAllDriverWithoutAmbulance(String status);
 
     Driver registedAmbulanceToDriver(Long driverId, Ambulance ambulance);

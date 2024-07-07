@@ -12,7 +12,6 @@ public class Ambulance {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long amid;
 
-
     @OneToOne(cascade = CascadeType.ALL)
     private Vehicle vehicle;
 
@@ -20,6 +19,16 @@ public class Ambulance {
     private List<String> driverList ;
 
     private String city ;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Booking> bookings;
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
+    }
 
     public String getCity() {
         return city;
