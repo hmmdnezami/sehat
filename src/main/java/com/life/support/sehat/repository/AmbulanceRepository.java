@@ -2,6 +2,7 @@ package com.life.support.sehat.repository;
 
 import com.life.support.sehat.models.Ambulance;
 import com.life.support.sehat.models.HealthcareFacility;
+import com.life.support.sehat.models.Location;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -13,4 +14,5 @@ public interface AmbulanceRepository extends CrudRepository<Ambulance, Long> {
 
 //    @Query("select h from Ambulance h where h.city = ?1")
     List<Ambulance> findAmbulanceByCity(String cityName);
+    List<Ambulance> findAmbulanceNearUser(String city);
 }

@@ -25,6 +25,8 @@ public class Booking {
     private Date createdAt;
     @UpdateTimestamp
     private Date updatedAt;
+    private Date rideStartAt;
+    private Date rideEndAt;
 
     public long getBid() {
         return bid;
@@ -107,5 +109,21 @@ public class Booking {
 
     public void setAmbulanceId(long ambulanceId) {
         this.ambulanceId = ambulanceId;
+    }
+
+    public Date getRideStartAt() {
+        return rideStartAt;
+    }
+
+    public void setRideStartAt(Date rideStartAt) {
+        this.rideStartAt = rideStartAt;
+    }
+
+    public Date getRideEndAt() {
+        return rideEndAt;
+    }
+
+    public void setRideEndAt(Date rideEndAt) {
+        this.rideEndAt = rideEndAt;
     }
 }

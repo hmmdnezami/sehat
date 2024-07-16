@@ -16,11 +16,35 @@ public class Ambulance {
     private Vehicle vehicle;
 
     private Status status;
-    private List<String> driverList ;
+    private long currentDriver ;
 
-    private String city ;
+    private String city;
+
+    @JsonInclude(value = JsonInclude.Include.NON_NULL)
+    @OneToOne(cascade = CascadeType.ALL)
+    private Location location;
+
     @OneToMany(cascade = CascadeType.ALL)
     private List<Booking> bookings;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private List<AmbulanceHistory> ambulanceHistory;
+
+    public long getCurrentDriver() {
+        return currentDriver;
+    }
+
+    public void setCurrentDriver(long currentDriver) {
+        this.currentDriver = currentDriver;
+    }
+
+    public List<AmbulanceHistory> getAmbulanceHistory() {
+        return ambulanceHistory;
+    }
+
+    public void setAmbulanceHistory(List<AmbulanceHistory> ambulanceHistory) {
+        this.ambulanceHistory = ambulanceHistory;
+    }
 
     public List<Booking> getBookings() {
         return bookings;
@@ -37,11 +61,6 @@ public class Ambulance {
     public void setCity(String city) {
         this.city = city;
     }
-
-    @JsonInclude(value = JsonInclude.Include.NON_NULL)
-    @OneToOne(cascade = CascadeType.ALL)
-    private Location location;
-
 
     public long getAmid() {
         return amid;
@@ -65,14 +84,6 @@ public class Ambulance {
 
     public void setStatus(Status status) {
         this.status = status;
-    }
-
-    public List<String> getDriverList() {
-        return driverList;
-    }
-
-    public void setDriverList(List<String> driverList) {
-        this.driverList = driverList;
     }
 
     public Location getLocation() {

@@ -16,4 +16,8 @@ public interface SehatManagerService {
     List<Driver> findAllDriverWithoutAmbulance(String status);
 
     Driver registedAmbulanceToDriver(Long driverId, Ambulance ambulance);
+
+    HealthcareFacility getOptimalHospitalForBooking(Booking booking);
+    List<HealthcareFacility> rankHospitalsBasedOnReviews(String city);
+
 }

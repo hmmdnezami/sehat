@@ -1,8 +1,13 @@
 package com.life.support.sehat.service.impl;
 
+import com.life.support.sehat.models.Ambulance;
 import com.life.support.sehat.models.Booking;
+import com.life.support.sehat.models.Status;
+import com.life.support.sehat.repository.AmbulanceRepository;
 import com.life.support.sehat.repository.BookingRepository;
 import com.life.support.sehat.service.BookingService;
+import com.life.support.sehat.service.FareService;
+import com.life.support.sehat.service.NotificationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +20,18 @@ public class BookingServiceImpl implements BookingService {
 
     @Autowired
     private BookingRepository bookingRepository;
+
+    @Autowired
+    private SehatManagerServiceImpl sehatManagerService;
+
+    @Autowired
+    private FareService fareService;
+
+    @Autowired
+    private AmbulanceRepository ambulanceRepository;
+
+    @Autowired
+    private NotificationService notificationService;
 
     private static final Logger logger = LoggerFactory.getLogger(BookingServiceImpl.class);
     /**
@@ -43,7 +60,23 @@ public class BookingServiceImpl implements BookingService {
      * @return
      */
     @Override
-    public Booking makeBooking(Booking booking) {
+    public Booking makeBooking(Booking booking, String city) {
+        List<Ambulance> ambulances = sehatManagerService.getAmbulaceNearToUserLoc(booking.getPickup(), city);
+        Ambulance ambulance = null;
+        for(Ambulance amb : ambulances){
+            if(notificationService.pushNotificationToUser(amb.getCurrentDriver())){
+                ambulance = amb;
+                break;
+            }
+        }
+        if(ambulance==null){
+            return null;
+        }
+        booking.setAmbulanceId(ambulance.getAmid());
+        booking.setDriverId(ambulance.getCurrentDriver());
+        ambulance.setStatus(Status.BOOKED);
+        ambulanceRepository.save(ambulance);
+        fareService.calculateFare(booking.getPickup(),booking.getTargetHealthcareId());
         return bookingRepository.save(booking);
     }
 
@@ -66,5 +99,23 @@ public class BookingServiceImpl implements BookingService {
             return bookingRepository.findByUserIdOrderByCreatedAtDesc(userId);
         }
         return bookingRepository.findByDriverIdOrderByCreatedAtDesc(userId);
+    }
+
+    /**
+     * @param booking 
+     * @return
+     */
+    @Override
+    public Booking makeEmergencyBooking(Booking booking) {
+        return null;
+    }
+
+    /**
+     * @param booking 
+     * @return
+     */
+    @Override
+    public Boolean cancelBooking(Booking booking) {
+        return null;
     }
 }

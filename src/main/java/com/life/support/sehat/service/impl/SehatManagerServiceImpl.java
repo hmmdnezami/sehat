@@ -1,10 +1,7 @@
 package com.life.support.sehat.service.impl;
 
 import com.life.support.sehat.dto.Driver;
-import com.life.support.sehat.models.Ambulance;
-import com.life.support.sehat.models.Booking;
-import com.life.support.sehat.models.HealthcareFacility;
-import com.life.support.sehat.models.User;
+import com.life.support.sehat.models.*;
 import com.life.support.sehat.repository.AmbulanceRepository;
 import com.life.support.sehat.repository.BookingRepository;
 import com.life.support.sehat.repository.HospitalRepository;
@@ -48,6 +45,14 @@ public class SehatManagerServiceImpl implements SehatManagerService {
 
     }
 
+    public List<Ambulance> getAmbulaceNearToUserLoc(Location location, String city) {
+        List<Ambulance> ambulances = ambulanceRepository.findAmbulanceNearUser(city);
+        List<Ambulance> assignedAmbulances = null;
+//         TODO - write a function so ambulance can be sort (according to user location)
+        return assignedAmbulances;
+
+    }
+
     @Override
     public List<Driver> findAllDriverWithoutAmbulance(String status) {
 
@@ -77,6 +82,24 @@ public class SehatManagerServiceImpl implements SehatManagerService {
         }
         return new Driver();
 
+    }
+
+    /**
+     * @param booking 
+     * @return
+     */
+    @Override
+    public HealthcareFacility getOptimalHospitalForBooking(Booking booking) {
+        return null;
+    }
+
+    /**
+     * @param city 
+     * @return
+     */
+    @Override
+    public List<HealthcareFacility> rankHospitalsBasedOnReviews(String city) {
+        return List.of();
     }
 
     public Driver convertUserToDriver(User user) {
