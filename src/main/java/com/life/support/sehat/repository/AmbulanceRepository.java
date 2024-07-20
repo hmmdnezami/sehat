@@ -14,5 +14,6 @@ public interface AmbulanceRepository extends CrudRepository<Ambulance, Long> {
 
 //    @Query("select h from Ambulance h where h.city = ?1")
     List<Ambulance> findAmbulanceByCity(String cityName);
-    List<Ambulance> findAmbulanceNearUser(String city);
+
+//    List<Ambulance> findAmbulanceNearUser(String city);
 }

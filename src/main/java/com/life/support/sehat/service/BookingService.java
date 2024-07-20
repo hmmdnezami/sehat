@@ -8,7 +8,7 @@ public interface BookingService {
 
     Booking getLatestBookingByUserId(long userId, boolean isPatient);
     Booking getBookingByBookingId(long bookingId);
-    Booking makeBooking(Booking booking, String city);
+    Booking makeBooking(Booking booking);
     Booking updateBooking(Booking booking);
     List<Booking> searchBookingHistoryOfUser(long userId, boolean isPatient);
     Booking makeEmergencyBooking(Booking booking);   //the payload will only consist of userId and pick up location

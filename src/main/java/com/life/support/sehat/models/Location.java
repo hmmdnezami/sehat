@@ -2,7 +2,7 @@ package com.life.support.sehat.models;
 
 import jakarta.persistence.*;
 
-@Entity
+@Entity(name = "location")
 public class Location {
 
     @Id

@@ -16,7 +16,7 @@ public class Booking {
     private long driverId;
     private long ambulanceId;
     @OneToOne(cascade = CascadeType.ALL)
-    private Location pickup;
+    private DetailedLocation pickup;           //using detailed location as all the details should be in record
     private long targetHealthcareId;
     private BookingStatus BookingStatus;
     @OneToOne(cascade = CascadeType.ALL)
@@ -52,11 +52,11 @@ public class Booking {
         this.driverId = driverId;
     }
 
-    public Location getPickup() {
+    public DetailedLocation getPickup() {
         return pickup;
     }
 
-    public void setPickup(Location pickup) {
+    public void setPickup(DetailedLocation pickup) {
         this.pickup = pickup;
     }
 

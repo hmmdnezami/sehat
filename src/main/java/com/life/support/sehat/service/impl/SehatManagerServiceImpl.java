@@ -45,8 +45,12 @@ public class SehatManagerServiceImpl implements SehatManagerService {
 
     }
 
-    public List<Ambulance> getAmbulaceNearToUserLoc(Location location, String city) {
-        List<Ambulance> ambulances = ambulanceRepository.findAmbulanceNearUser(city);
+    public List<Ambulance> getAmbulaceNearToUserLoc(DetailedLocation location) {
+        if(location.getCity()==null || location.getCity().isEmpty()){
+            throw new IllegalArgumentException("city is not provided for booking");
+        }
+//        List<Ambulance> ambulances = ambulanceRepository.findAmbulanceNearUser(location.getCity());
+        List<Ambulance> ambulances = ambulanceRepository.findAmbulanceByCity(location.getCity());
         List<Ambulance> assignedAmbulances = null;
 //         TODO - write a function so ambulance can be sort (according to user location)
         return assignedAmbulances;

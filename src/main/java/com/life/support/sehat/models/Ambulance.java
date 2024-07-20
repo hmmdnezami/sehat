@@ -27,7 +27,7 @@ public class Ambulance {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Booking> bookings;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<AmbulanceHistory> ambulanceHistory;
 
     public long getCurrentDriver() {

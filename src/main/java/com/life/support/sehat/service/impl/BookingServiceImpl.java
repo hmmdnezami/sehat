@@ -60,8 +60,8 @@ public class BookingServiceImpl implements BookingService {
      * @return
      */
     @Override
-    public Booking makeBooking(Booking booking, String city) {
-        List<Ambulance> ambulances = sehatManagerService.getAmbulaceNearToUserLoc(booking.getPickup(), city);
+    public Booking makeBooking(Booking booking) {
+        List<Ambulance> ambulances = sehatManagerService.getAmbulaceNearToUserLoc(booking.getPickup());
         Ambulance ambulance = null;
         for(Ambulance amb : ambulances){
             if(notificationService.pushNotificationToUser(amb.getCurrentDriver())){
@@ -70,7 +70,7 @@ public class BookingServiceImpl implements BookingService {
             }
         }
         if(ambulance==null){
-            return null;
+            throw new RuntimeException("No ambulance available");
         }
         booking.setAmbulanceId(ambulance.getAmid());
         booking.setDriverId(ambulance.getCurrentDriver());
