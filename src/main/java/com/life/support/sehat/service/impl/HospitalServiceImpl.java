@@ -27,7 +27,7 @@ public class HospitalServiceImpl implements HospitalService {
     }
 
     @Override
-    public HealthcareFacility getHealthcareFacility(Long id) {
+    public HealthcareFacility getHealthcareFacility(long id) {
         Optional<HealthcareFacility> healthcareFacility = hospitalRepository.findById(id);
         return healthcareFacility.orElse(null);
     }

@@ -28,12 +28,12 @@ public class HospitalController {
     }
 
     @GetMapping(value = "/healthcare/{healthCardId}")
-    public HealthcareFacility getHealthcareFacility(@RequestParam Long healthCardId){
+    public HealthcareFacility getHealthcareFacility(@PathVariable long healthCardId){
         return hospitalService.getHealthcareFacility(healthCardId);
     }
 
     @GetMapping(value ="/heathCare/{cityName}")
-    public List<HealthcareFacility> getAllHealthCareinCity(@RequestParam String cityName) {
+    public List<HealthcareFacility> getAllHealthCareinCity(@PathVariable String cityName) {
         return hospitalService.getAllHealthCareInCity(cityName);
     }
 }

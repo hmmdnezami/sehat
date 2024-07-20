@@ -51,7 +51,9 @@ public class SehatManagerServiceImpl implements SehatManagerService {
         }
 //        List<Ambulance> ambulances = ambulanceRepository.findAmbulanceNearUser(location.getCity());
         List<Ambulance> ambulances = ambulanceRepository.findAmbulanceByCity(location.getCity());
+//        System.out.println(ambulances);
         List<Ambulance> assignedAmbulances = null;
+        if (ambulances.size() != 0) assignedAmbulances = ambulances;
 //         TODO - write a function so ambulance can be sort (according to user location)
         return assignedAmbulances;
 
