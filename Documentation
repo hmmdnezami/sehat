@@ -95,5 +95,42 @@ user
  booking api called -> returns booking(with ambulance, driver id and fare)
 
 
+            "bounds": {
+                "northeast": {
+                    "lat": 12.9747728,
+                    "lng": 77.7037385
+                },
+                "southwest": {
+                    "lat": 12.9737227,
+                    "lng": 77.7023443
+                }
+            },
+            "components": {
+                "ISO_3166-1_alpha-2": "IN",
+                "ISO_3166-1_alpha-3": "IND",
+                "ISO_3166-2": [
+                    "IN-KA"
+                ],
+                "_category": "road",
+                "_normalized_city": "Karthik Nagar",
+                "_type": "road",
+                "continent": "Asia",
+                "country": "India",
+                "country_code": "in",
+                "county": "Bangalore East",
+                "neighbourhood": "Karthik Nagar",
+                "postcode": "560048",
+                "road": "unnamed road",
+                "road_type": "residential",
+                "state": "Karnataka",
+                "state_code": "KA",
+                "state_district": "Bengaluru Urban",
+                "suburb": "Doddanekundi"
+            },
 
-
+            "formatted": "unnamed road, Doddanekundi, - 560048, Karnataka, India",
+            "geometry": {
+                "lat": 12.9744293,
+                "lng": 77.7025793
+            }
+        }
