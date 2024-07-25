@@ -7,7 +7,7 @@ import java.util.List;
 public interface HospitalService {
     HealthcareFacility addHealthcareFacility(HealthcareFacility healthcareFacility);
 
-    HealthcareFacility getHealthcareFacility(Long id);
+    HealthcareFacility getHealthcareFacility(long id);
 
     List<HealthcareFacility> getAllHealthcareFacility();
 

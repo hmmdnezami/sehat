@@ -15,6 +15,7 @@ public class AmbulanceController {
     @Autowired
     private AmbulanceService ambulanceService;
 
+
     @ResponseBody
     @RequestMapping(value = "/ambulances", method = RequestMethod.POST)
     public Ambulance addAmbulances(@RequestBody Ambulance ambulance) {
