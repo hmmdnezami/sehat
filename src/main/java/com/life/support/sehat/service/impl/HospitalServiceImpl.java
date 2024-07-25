@@ -39,6 +39,6 @@ public class HospitalServiceImpl implements HospitalService {
 
     @Override
     public List<HealthcareFacility> getAllHealthCareInCity(String cityName) {
-        return hospitalRepository.findHospitalsByCity(cityName);
+        return hospitalRepository.findByCity(cityName);
     }
 }

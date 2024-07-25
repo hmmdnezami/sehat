@@ -98,6 +98,8 @@ hospital and its location -> bidirectional onetoone relation -> hospital has loc
 hospital and contact -> unidirectional onetoone
 hospital and address -> unidirectional onetoone
 
+
+
             "bounds": {
                 "northeast": {
                     "lat": 12.9747728,
@@ -137,3 +139,19 @@ hospital and address -> unidirectional onetoone
                 "lng": 77.7025793
             }
         }
+###############################################################
+BOOKING_FLOW
+
+user lands on the page, its location is fetched
+
+user location and city sent to backend -> returns list of hospitals and their locations
+
+hospital location is extracted and shown on the map with user current location
+
+when user clicks on the placeholder of hospital, its details is shown,
+
+user selects hospitals -> api is hit whose payload has user location and hospital location -> returns
+expected fare by calculating distance from mapbox api and showing the route on the map,
+
+user confirms booking -> ambulance is assigned by searching ambulance within a distance -> how?
+###############################################################

@@ -8,11 +8,11 @@ public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String latitude;
-    private String longitude;
+    private double latitude;
+    private double longitude;
     @OneToOne(mappedBy = "location")
     private HealthcareFacility healthcareFacility;
-    @OneToOne(mappedBy = "ambulance")
+    @OneToOne(mappedBy = "location")
     private Ambulance ambulance;
 
     public long getId() {
@@ -23,19 +23,19 @@ public class Location {
         this.id = id;
     }
 
-    public String getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(String latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
-    public String getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(String longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 

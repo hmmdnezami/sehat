@@ -76,7 +76,7 @@ public class BookingServiceImpl implements BookingService {
         booking.setDriverId(ambulance.getCurrentDriver());
         ambulance.setStatus(Status.BOOKED);
         ambulanceRepository.save(ambulance);
-        fareService.calculateFare(booking.getPickup(),booking.getTargetHealthcareId());
+        fareService.calculateFare(booking.getPickup().getLocation(),booking.getTargetHealthcareId());
         return bookingRepository.save(booking);
     }
 

@@ -32,7 +32,7 @@ public class SehatManagerServiceImpl implements SehatManagerService {
 
     @Override
     public List<HealthcareFacility> getAllHospitals(String cityName) {
-        return hospitalRepository.findHospitalsByCity(cityName);
+        return hospitalRepository.findByCity(cityName);
     }
 
     @Override
@@ -50,7 +50,7 @@ public class SehatManagerServiceImpl implements SehatManagerService {
             throw new IllegalArgumentException("city is not provided for booking");
         }
 //        List<Ambulance> ambulances = ambulanceRepository.findAmbulanceNearUser(location.getCity());
-        List<Ambulance> ambulances = ambulanceRepository.findAmbulanceByCity(location.getCity());
+        List<Ambulance> ambulances = ambulanceRepository.findAmbulanceByCityAndLocation(location.getLocation().getLatitude(), location.getLocation().getLongitude(),10);
 //        System.out.println(ambulances);
         List<Ambulance> assignedAmbulances = null;
         if (ambulances.size() != 0) assignedAmbulances = ambulances;
