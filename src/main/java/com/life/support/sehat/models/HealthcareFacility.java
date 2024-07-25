@@ -6,20 +6,19 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
-import java.util.List;
 
-@Entity
-@Table(name = "healthcare")
+
+@Entity(name = "healthcare")
 public class HealthcareFacility {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
     @JsonInclude(value = JsonInclude.Include.NON_NULL)
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private Location location;
     @JsonInclude(value = JsonInclude.Include.NON_NULL)
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private Contact contact;
     @CreationTimestamp
     private Date createdAt;
@@ -27,7 +26,7 @@ public class HealthcareFacility {
     private Date updateAt;
 
     @JsonInclude(value = JsonInclude.Include.NON_NULL)
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private Address address;
 
     private String city ;
@@ -43,6 +42,13 @@ public class HealthcareFacility {
 
     public void setLocation(Location location) {
         this.location = location;
+        location.setHealthcareFacility(this);
+    }
+    public void removeLocation(Location location){
+        if(location!=null){
+            location.setHealthcareFacility(null);
+        }
+        this.location=null;
     }
 
     public Address getAddress() {

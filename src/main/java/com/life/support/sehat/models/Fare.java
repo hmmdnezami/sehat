@@ -8,7 +8,7 @@ public class Fare {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long fid;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "fare")
     private Booking booking;
     private FareStatus fareStatus;
     private FareMode mode;

@@ -10,6 +10,10 @@ public class Location {
     private long id;
     private String latitude;
     private String longitude;
+    @OneToOne(mappedBy = "location")
+    private HealthcareFacility healthcareFacility;
+    @OneToOne(mappedBy = "ambulance")
+    private Ambulance ambulance;
 
     public long getId() {
         return id;
@@ -33,5 +37,21 @@ public class Location {
 
     public void setLongitude(String longitude) {
         this.longitude = longitude;
+    }
+
+    public HealthcareFacility getHealthcareFacility() {
+        return healthcareFacility;
+    }
+
+    public void setHealthcareFacility(HealthcareFacility healthcareFacility) {
+        this.healthcareFacility = healthcareFacility;
+    }
+
+    public Ambulance getAmbulance() {
+        return ambulance;
+    }
+
+    public void setAmbulance(Ambulance ambulance) {
+        this.ambulance = ambulance;
     }
 }

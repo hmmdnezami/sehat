@@ -21,11 +21,8 @@ public class Ambulance {
     private String city;
 
     @JsonInclude(value = JsonInclude.Include.NON_NULL)
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private Location location;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Booking> bookings;
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<AmbulanceHistory> ambulanceHistory;
@@ -44,14 +41,6 @@ public class Ambulance {
 
     public void setAmbulanceHistory(List<AmbulanceHistory> ambulanceHistory) {
         this.ambulanceHistory = ambulanceHistory;
-    }
-
-    public List<Booking> getBookings() {
-        return bookings;
-    }
-
-    public void setBookings(List<Booking> bookings) {
-        this.bookings = bookings;
     }
 
     public String getCity() {
@@ -92,5 +81,13 @@ public class Ambulance {
 
     public void setLocation(Location location) {
         this.location = location;
+        location.setAmbulance(this);
+    }
+
+    public void removeLocation(Location location){
+        if(location!=null){
+            location.setAmbulance(null);
+        }
+        this.location=null;
     }
 }

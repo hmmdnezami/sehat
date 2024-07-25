@@ -94,6 +94,8 @@ user
  selects hospital -> confirm booking (userId, hospitalId, location)->
  booking api called -> returns booking(with ambulance, driver id and fare)
 
-
+hospital and its location -> bidirectional onetoone relation -> hospital has location, location has hospital
+hospital and contact -> unidirectional onetoone
+hospital and address -> unidirectional onetoone
 
 

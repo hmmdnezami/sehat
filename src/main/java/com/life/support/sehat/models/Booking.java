@@ -19,7 +19,7 @@ public class Booking {
     private DetailedLocation pickup;           //using detailed location as all the details should be in record
     private long targetHealthcareId;
     private BookingStatus BookingStatus;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private Fare fare;
     @CreationTimestamp
     private Date createdAt;

@@ -4,10 +4,11 @@ package com.life.support.sehat.models;
 import jakarta.persistence.Entity;
 
 @Entity(name = "detailedlocation")
-public class DetailedLocation extends Location{
+public class DetailedLocation {
 
     private String city;
     private String locality;
+    private Location location;
 
     public String getCity() {
         return city;
@@ -23,5 +24,13 @@ public class DetailedLocation extends Location{
 
     public void setLocality(String locality) {
         this.locality = locality;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 }

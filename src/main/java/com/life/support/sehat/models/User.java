@@ -15,7 +15,7 @@ public class User {
     private Long id;
 
     private String username;
-
+    private long phone;
     private String email;
 
     private String firstName ;
@@ -122,6 +122,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public long getPhone() {
+        return phone;
+    }
+
+    public void setPhone(long phone) {
+        this.phone = phone;
     }
 
     public User() {
