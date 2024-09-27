@@ -146,12 +146,15 @@ user lands on the page, its location is fetched
 
 user location and city sent to backend -> returns list of hospitals and their locations
 
-hospital location is extracted and shown on the map with user current location
+hospital's location is extracted and shown on the map with user current location
 
 when user clicks on the placeholder of hospital, its details is shown,
 
 user selects hospitals -> api is hit whose payload has user location and hospital location -> returns
 expected fare by calculating distance from mapbox api and showing the route on the map,
+
+expected fare calculation api receives payload as distance and duration calculated by mapbox api as a hospital is selected,
+mapbox api is called from frontend and it provides distance and duration in response
 
 user confirms booking -> ambulance is assigned by searching ambulance within a distance -> how?
 ###############################################################

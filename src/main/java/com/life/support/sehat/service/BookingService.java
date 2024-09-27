@@ -14,5 +14,4 @@ public interface BookingService {
     Booking makeEmergencyBooking(Booking booking);   //the payload will only consist of userId and pick up location
     Boolean cancelBooking(Booking booking);
 
-
 }

@@ -7,4 +7,6 @@ public interface FareService {
     void calculateFare(Location pickup, long targetHospital);
     void makePayment(Booking booking);
     void cancelPayment(Booking booking);
+
+    int calculateExpectedFare(int duration, int distance);
 }

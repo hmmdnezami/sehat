@@ -31,4 +31,14 @@ public class FareServiceImpl implements FareService {
     public void cancelPayment(Booking booking) {
 
     }
+
+    /**
+     * @param duration
+     * @param distance
+     * @return
+     */
+    @Override
+    public int calculateExpectedFare(int duration, int distance) {
+        return duration*distance;
+    }
 }
